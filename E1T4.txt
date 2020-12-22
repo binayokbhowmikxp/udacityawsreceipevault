@@ -1,0 +1,12 @@
+Based on the architecture diagram, and the steps you have taken so far to upload data and access the application web service, identify at least 2 obvious poor practices as it relates to security.  Include justification.
+
+# Poor practice 1
+
+The "Web Service Instance" should be in the private subnet and the the security group attached to the web server should allow traffic only from the Application Load Balancer
+i.e WebAppSG should allow traffic only from security group of ALB. In case if login required to this server then it should be from Bastion host (of course shoudl be hardened)
+This will ensure that the access to the web server is restricted and controlled.
+
+# Poor practice 2
+
+VPC endpoint should be created to access S3 and both the S3 bucket should have Bucket policy granted only those required (least previledge access).
+This will ensure only the trusted and authorized ones are accessing the S3 bucket.
