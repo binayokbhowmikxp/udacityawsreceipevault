@@ -1,0 +1,18 @@
+1. Ensure no security groups allow ingress from 0.0.0.0/0 to port 22
+
+2. Ensure no security groups allow ingress from 0.0.0.0/0 to port 3389
+
+3. securityhub-s3-bucket-server-side-encryption-enabled-b739cc41
+
+4. S3 buckets should require requests to use Secure Socket Layer
+
+5. Attached EBS volumes should be encrypted at-rest
+
+6. Well known port such as ftp , telnet. syslog etc are reachable from internet.
+
+
+Recommendation:
+
+1. Remove access to web server from 0.0.0.0/0 and move the web server to the private group . Create a Bastion Host (hardened) and allow only login from Bastion host
+2. Enable versioning and SSL in the two S3 buckets
+3. EBS volumes should be encrypted. 
