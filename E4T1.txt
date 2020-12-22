@@ -1,0 +1,10 @@
+# Identify 2-3 changes that can be made to our environment to prevent an ssh brute force attack from the internet.
+
+1. Disable SSH password login
+2. Allow access to the instance via AWS SSM.
+3. Allow access only via certain trusted IP address e.g Hardened Bastion Host
+
+# Neither instance should have had access to the secret recipes bucket, in the even that instance API credentials were compromised how could we have prevented access to sensitive data.
+
+1. IAM Role attached to the instance should have least priviledge access policy. It should not have access to S3 secret receipe bucket.
+2. Restrict access using S3 bucket policy in s3 secret receipe bucket
